@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:context="com.hungryhackers.tweeter.ScrollingActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:fitsSystemWindows="false"
+        android:background="@color/white"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            app:contentScrim="@color/white"
+            app:titleEnabled="false"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/profile_fragment"
+                app:layout_collapseMode="none"
+                app:layout_scrollFlags="scroll|snap"
+                android:fitsSystemWindows="false"
+                android:name="com.hungryhackers.tweeter.ProfileFragment"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_scrolling" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        app:backgroundTint="@color/colorPrimary"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/quill" />
+
+</android.support.design.widget.CoordinatorLayout>

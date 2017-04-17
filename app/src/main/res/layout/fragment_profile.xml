@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <developer.shivam.library.CrescentoContainer
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/bg"
+        android:elevation="10dp"
+        android:src="@drawable/test_dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:curvature="60dp">
+        <ImageView
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/test_dp"
+            android:foreground="@drawable/black_overlay"/>
+    </developer.shivam.library.CrescentoContainer>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp">
+
+        <ImageView
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentStart="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/twitter_icon_shadow"/>
+
+        <TextView
+            android:id="@+id/logout"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|right"
+            android:text="Logout"
+            android:paddingEnd="4dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:background="@drawable/logout_bg"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:civ_border_width="7dp"
+            android:elevation="20dp"
+            android:layout_marginTop="150dp"
+            app:civ_border_color="@color/white"
+            android:src="@drawable/test_dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:foreground="@drawable/blue_button_shadow"
+            android:layout_marginEnd="10dp"
+            android:layout_toLeftOf="@id/dp"
+            android:layout_marginTop="170dp"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/round_buttons"
+            android:text="720\nfollowers"/>
+
+        <TextView
+            android:foreground="@drawable/blue_button_shadow"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/dp"
+            android:layout_marginTop="170dp"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/round_buttons"
+            android:text="320\nfollowing"/>
+
+        <LinearLayout
+            android:layout_below="@id/dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_name"
+                android:textColor="@color/blackBlue"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="Manav Jain"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/screen_name"
+                android:textColor="@color/greyBlue"
+                android:textSize="15sp"
+                android:text="SuperMan_av"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
