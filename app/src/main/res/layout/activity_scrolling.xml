@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="false"
         android:background="@color/white"
         android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
@@ -22,6 +22,7 @@
             android:fitsSystemWindows="false"
             app:contentScrim="@color/white"
             app:titleEnabled="false"
+            android:elevation="6dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <fragment
@@ -38,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                android:fitsSystemWindows="true"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 

@@ -2,4 +2,10 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="login_button_height">70dp</dimen>
+    <dimen name="login_button_radius">35dp</dimen>
+
+    <dimen name="info_type_font_size">13sp</dimen>
+    <dimen name="profile_img_radius">100dp</dimen>
 </resources>

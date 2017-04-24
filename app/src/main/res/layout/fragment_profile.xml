@@ -1,120 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
-    <developer.shivam.library.CrescentoContainer
+    <ImageView
+        android:id="@+id/coverImage"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/bg"
-        android:elevation="10dp"
-        android:src="@drawable/test_dp"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        app:curvature="60dp">
-        <ImageView
-            android:scaleType="centerCrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/test_dp"
-            android:foreground="@drawable/black_overlay"/>
-    </developer.shivam.library.CrescentoContainer>
+        android:layout_height="170dp"
+        android:background="@color/lightGrey"
+        android:foreground="@drawable/black_overlay"
+        android:scaleType="centerCrop" />
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="20dp">
-
-        <ImageView
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="15dp"
-            android:layout_alignParentStart="true"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/twitter_icon_shadow"/>
-
-        <TextView
-            android:id="@+id/logout"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_alignParentRight="true"
-            android:gravity="center_vertical|right"
-            android:text="Logout"
-            android:paddingEnd="4dp"
-            android:layout_marginTop="30dp"
-            android:layout_width="60dp"
-            android:layout_height="36dp"
-            android:background="@drawable/logout_bg"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/dp"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            app:civ_border_width="7dp"
-            android:elevation="20dp"
-            android:layout_marginTop="150dp"
-            app:civ_border_color="@color/white"
-            android:src="@drawable/test_dp"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:foreground="@drawable/blue_button_shadow"
-            android:layout_marginEnd="10dp"
-            android:layout_toLeftOf="@id/dp"
-            android:layout_marginTop="170dp"
-            android:textColor="@color/white"
-            android:textSize="11sp"
-            android:gravity="center"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/round_buttons"
-            android:text="720\nfollowers"/>
-
-        <TextView
-            android:foreground="@drawable/blue_button_shadow"
-            android:layout_marginStart="10dp"
-            android:layout_toRightOf="@id/dp"
-            android:layout_marginTop="170dp"
-            android:textColor="@color/white"
-            android:textSize="11sp"
-            android:gravity="center"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/round_buttons"
-            android:text="320\nfollowing"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_below="@id/dp"
             android:orientation="vertical"
-            android:layout_alignParentBottom="true"
+            android:id="@+id/profile_images_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_weight=".8"
+            android:layout_height="0dp"
+            android:elevation="20dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/twitter_icon_shadow" />
+
+                <TextView
+                    android:layout_gravity="right"
+                    android:id="@+id/logout"
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/logout_bg"
+                    android:gravity="center_vertical|right"
+                    android:paddingEnd="4dp"
+                    android:text="Logout"
+                    android:textColor="@android:color/holo_red_dark" />
+            </LinearLayout>
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_gravity="center"
+                android:id="@+id/dp"
+                android:layout_width="@dimen/profile_img_radius"
+                android:layout_height="@dimen/profile_img_radius"
+                android:elevation="20dp"
+                android:src="@color/lightGrey"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="1dp" />
 
             <TextView
+                android:text="manav jain"
                 android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:textColor="@color/blackBlue"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="Manav Jain"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
             <TextView
+                android:text="superman"
                 android:id="@+id/screen_name"
-                android:textColor="@color/greyBlue"
-                android:textSize="15sp"
-                android:text="SuperMan_av"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/greyBlue"
+                android:textSize="13sp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:layout_below="@id/profile_images_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@color/TDarkGrayBG">
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/info_type_font_size"
+                    android:gravity="center"
+                    android:textColor="@color/TLightGrey"
+                    android:text="Tweets"/>
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/tweets_number"
+                    android:textAppearance="@style/TextAppearance.AppCompat.InfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/info_type_font_size"
+                    android:gravity="center"
+                    android:textColor="@color/TLightGrey"
+                    android:text="Following"/>
+
+                <TextView
+                    android:id="@+id/following_number"
+                    android:textAppearance="@style/TextAppearance.AppCompat.InfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/info_type_font_size"
+                    android:gravity="center"
+                    android:textColor="@color/TLightGrey"
+                    android:text="Followers"/>
+
+                <TextView
+                    android:id="@+id/followers_number"
+                    android:textAppearance="@style/TextAppearance.AppCompat.InfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:elevation="100dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 
 
 

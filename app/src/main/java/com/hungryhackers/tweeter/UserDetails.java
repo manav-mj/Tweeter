@@ -10,4 +10,6 @@ public class UserDetails {
     String id_str;
     String profile_image_url;
     String profile_banner_url;
+    String followers_count;
+    String friends_count;
 }
