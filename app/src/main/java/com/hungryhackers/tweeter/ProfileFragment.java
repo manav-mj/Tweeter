@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -39,11 +40,16 @@ public class ProfileFragment extends Fragment {
     TextView logout;
 
     TextView followers, following;
+    LinearLayout progressBarLayout;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        progressBarLayout = (LinearLayout) v.findViewById(R.id.profile_progress_layout);
+        progressBarLayout.setVisibility(View.VISIBLE);
 
         coverImageContainer = (CrescentoContainer) v.findViewById(R.id.bg);
         coverImageContainer.setVisibility(View.VISIBLE);
@@ -81,15 +87,13 @@ public class ProfileFragment extends Fragment {
     }
 
     public void setProfile(UserDetails userDetails){
-        String profileImageUrl = userDetails.profile_image_url;
-        userDetails.profile_image_url = profileImageUrl.replace("_normal","");
 
-        Picasso.with(getActivity()).load(userDetails.profile_image_url).noFade().into(profileImage);
+        Picasso.with(getActivity()).load(userDetails.profile_image_url).into(profileImage);
         Picasso.with(getActivity()).load(userDetails.profile_banner_url).noFade().into(coverImage);
         userName.setText(userDetails.name);
         screenName.setText("@"+userDetails.screen_name);
         followers.setText(userDetails.followers_count + "\nfollowers");
         following.setText(userDetails.friends_count + "\nfollowing");
-//        progressBarLayout.setVisibility(View.GONE);
+        progressBarLayout.setVisibility(View.GONE);
     }
 }
