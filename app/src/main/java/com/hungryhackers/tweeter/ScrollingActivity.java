@@ -6,30 +6,21 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.hungryhackers.tweeter.OAuth.GetHeader;
 import com.hungryhackers.tweeter.network.ApiClient;
 import com.hungryhackers.tweeter.network.ApiInterface;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.OAuthSigning;
-import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.internal.oauth.OAuth1aHeaders;
-import com.twitter.sdk.android.core.models.Tweet;
-import com.twitter.sdk.android.tweetui.TweetUtils;
-import com.twitter.sdk.android.tweetui.TweetView;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,10 +85,14 @@ public class ScrollingActivity extends AppCompatActivity {
             Log.i("loop", entry.getKey()+":"+entry.getValue());
         }
 
+        HashMap<String, String> map = new HashMap<>();
+        map.put("user_id",user.userId);
 
+        Map<String, String> authHeaders2 = oauthSigning.getOAuthEchoHeaders("GET", "https://api.twitter.com/1.1/users/show.json", map);
+//        oauthSigning.getAuthorizationHeader()
 
         try {
-            header = new GetHeader("https://api.twitter.com/1.1/users/show.json","GET",null,null).header;
+            header = new GetHeader("https://api.twitter.com/1.1/users/show.json","GET",map,null).header;
         } catch (SignatureException e) {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
@@ -107,20 +102,19 @@ public class ScrollingActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
+        Log.d("abcd",header);
         ApiInterface apiInterface = ApiClient.getApiInterface();
-        Call<UserDetails> call = apiInterface.getUserDetails(user.userId, authHeaders.get(HEADER_AUTH_CREDENTIALS));
-//        Call<UserDetails> call = apiInterface.getUserDetails(user.userId, header);
+        Call<UserDetails> call = apiInterface.getUserDetails(twitterSession.getUserId(), authHeaders2.get(HEADER_AUTH_CREDENTIALS));
+//        Call<UserDetails> call = apiInterface.getUserDetails(twitterSession.getUserId(), header);
         call.enqueue(new Callback<UserDetails>() {
             @Override
             public void onResponse(Call<UserDetails> call, Response<UserDetails> response) {
                 Log.i("man", call.request().url()+ "  : " + response.code() );
 
-//                if (response.isSuccessful()) {
-//                    userDetails = response.body();
-//                    Picasso.with(ScrollingActivity.this).load(userDetails.profile_image_url).into(profileImage);
-//                    Picasso.with(ScrollingActivity.this).load(userDetails.profile_banner_url).into(coverImage);
-//                }
+                if (response.isSuccessful()) {
+                    userDetails = response.body();
+                    profileFragment.setProfile(userDetails);
+                }
 
             }
 
