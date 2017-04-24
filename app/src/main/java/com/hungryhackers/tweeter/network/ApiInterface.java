@@ -21,7 +21,7 @@ import retrofit2.http.QueryMap;
 public interface ApiInterface {
 
     @GET("users/show.json")
-    Call<UserDetails> getUserDetails(@Query("user_id") String id, @Header("Authorization") String header);
+    Call<UserDetails> getUserDetails(@Query("user_id") long id, @Header("Authorization") String header);
 
     @GET("statuses/user_timeline.json")
     Call<ArrayList<String>> getUserTimeline(@Header("Authorization") String header);
