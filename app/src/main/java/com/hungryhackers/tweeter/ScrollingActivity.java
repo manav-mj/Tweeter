@@ -143,9 +143,9 @@ public class ScrollingActivity extends AppCompatActivity {
         user = new UserSession(secret, token, twitterSession.getUserName(), twitterSession.getUserId()+"");
 
         OAuthSigning oauthSigning = new OAuthSigning(authConfig, authToken);
-        Map<String, String> authHeaders = oauthSigning.getOAuthEchoHeadersForVerifyCredentials();
+//        Map<String, String> authHeaders = oauthSigning.getOAuthEchoHeadersForVerifyCredentials();
 
-        Log.i("man", authHeaders.toString());
+//        Log.i("man", authHeaders.toString());
         Log.d("ConsumerKey", authConfig.getConsumerKey());
         Log.d("ConsumerSecret", authConfig.getConsumerSecret());
         Log.d("Token", token);
@@ -153,14 +153,15 @@ public class ScrollingActivity extends AppCompatActivity {
         Log.d("UserName", twitterSession.getUserName());
         Log.d("UserId", String.valueOf(twitterSession.getUserId()));
 
-        for (Map.Entry<String, String> entry : authHeaders.entrySet()) {
-            Log.i("loop", entry.getKey()+":"+entry.getValue());
-        }
+
 
         HashMap<String, String> map = new HashMap<>();
         map.put("user_id",user.userId);
+        Map<String, String> authHeaders = oauthSigning.getOAuthEchoHeaders("GET", "https://api.twitter.com/1.1/users/show.json", map);
 
-        Map<String, String> authHeaders2 = oauthSigning.getOAuthEchoHeaders("GET", "https://api.twitter.com/1.1/users/show.json", map);
+        for (Map.Entry<String, String> entry : authHeaders.entrySet()) {
+            Log.i("loop", entry.getKey()+":"+entry.getValue());
+        }
 
 //        try {
 //            header = new GetHeader("https://api.twitter.com/1.1/users/show.json","GET",map,null).header;
@@ -176,7 +177,7 @@ public class ScrollingActivity extends AppCompatActivity {
 //        Log.d("abcd",header);
 
         ApiInterface apiInterface = ApiClient.getApiInterface();
-        Call<UserDetails> call = apiInterface.getUserDetails(twitterSession.getUserId(), authHeaders2.get(HEADER_AUTH_CREDENTIALS));
+        Call<UserDetails> call = apiInterface.getUserDetails(twitterSession.getUserId(), authHeaders.get(HEADER_AUTH_CREDENTIALS));
 //        Call<UserDetails> call = apiInterface.getUserDetails(twitterSession.getUserId(), header);
         call.enqueue(new Callback<UserDetails>() {
             @Override

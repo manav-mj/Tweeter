@@ -1,22 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="10dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentPadding="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp">
-        <RelativeLayout
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/feed_user_image"
+                android:layout_width="45dp"
+                android:layout_height="45dp"/>
 
-        </RelativeLayout>
+            <LinearLayout
+                android:paddingStart="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="2dp"
+                        android:textSize="17sp"
+                        android:textColor="@color/blackBlue"
+                        android:id="@+id/feed_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:ellipsize="end"
+                        android:textSize="14sp"
+                        android:padding="2dp"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/greyBlue"
+                        android:id="@+id/feed_user_screen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:padding="2dp"
+                    android:id="@+id/feed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/feed_media"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

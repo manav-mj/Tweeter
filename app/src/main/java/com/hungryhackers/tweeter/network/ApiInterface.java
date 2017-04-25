@@ -23,6 +23,6 @@ public interface ApiInterface {
     @GET("users/show.json")
     Call<UserDetails> getUserDetails(@Query("user_id") Long id, @Header("Authorization") String header);
 
-    @GET("statuses/user_timeline.json")
-    Call<ArrayList<String>> getUserTimeline(@Header("Authorization") String header);
+    @GET("statuses/home_timeline.json")
+    Call<ArrayList<Tweet>> getHomeTimeline(@Header("Authorization") String header);
 }

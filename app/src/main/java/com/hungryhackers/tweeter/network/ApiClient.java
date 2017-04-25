@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiClient {
-    public static Retrofit retrofit;
-    public static ApiInterface apiInterface;
+    private static Retrofit retrofit;
+    private static ApiInterface apiInterface;
     public static ApiInterface getApiInterface(){
         if (retrofit == null){
             retrofit = new Retrofit.Builder()
